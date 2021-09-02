@@ -50,5 +50,8 @@ class List:
             current = current.next
         return False
     
+    def is_empty(self):
+        return self.head is None
+    
     def __repr__(self):
         return f"{self.head}"
