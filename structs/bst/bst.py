@@ -57,4 +57,31 @@ def delete(node, value):
     else:
         node.left = delete(node.left, value)
     return node
+
+def inorder(node, lista_nodova):
+    if node is None:
+        return
+    if node.left is not None:
+        inorder(node.left, lista_nodova)
+    lista_nodova.append(node.value)
+    if node.right is not None:
+        inorder(node.right, lista_nodova)
+
+def preorder(node, lista_nodova):
+    if node is None:
+        return
+    lista_nodova.append(node.value)
+    if node.left is None:
+        preorder(node.left, lista_nodova)
+    if node.right is not None:
+        preorder(node.right, lista_nodova)
+
+def postorder(node, lista_nodova):
+    if node is None:
+        return
+    if node.left is not None:
+        postorder(node.left, lista_nodova)
+    if node.right is not None:
+        postorder(node.right, lista_nodova)
+    lista_nodova.append(node.value)
     
