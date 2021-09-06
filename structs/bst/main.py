@@ -1,4 +1,4 @@
-from bst import Node, insert, find, delete
+from bst import Node, insert, find, delete, inorder, preorder, postorder
 
 print("STARTING TEST")
 root = Node(4)
@@ -32,3 +32,21 @@ assert find(root, 2) == False
 delete(root, 9)
 assert find(root, 9) == False
 print("PASS delete()")
+
+# Test inorder()
+lista_inorder = []
+inorder(root, lista_inorder)
+assert lista_inorder == [1, 3, 5, 6, 7, 10, 100, 200]
+print("PASS inorder()")
+
+# Test preorder()
+lista_preorder = []
+preorder(root, lista_preorder)
+assert lista_preorder == [5, 1, 3, 6, 10, 7, 100, 200]
+print("PASS preorder()")
+
+# Test postorder()
+lista_postorder = []
+postorder(root, lista_postorder)
+assert lista_postorder == [3, 1, 7, 200, 100, 10, 6, 5]
+print("PASS postorder()")
