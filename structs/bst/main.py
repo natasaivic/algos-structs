@@ -1,4 +1,4 @@
-from bst import Node, insert, find, delete, inorder, preorder, postorder
+from bst import Node, insert, find, delete, inorder, preorder, postorder, bfs, dfs
 
 print("STARTING TEST")
 root = Node(4)
@@ -50,3 +50,13 @@ lista_postorder = []
 postorder(root, lista_postorder)
 assert lista_postorder == [3, 1, 7, 200, 100, 10, 6, 5]
 print("PASS postorder()")
+
+# Test bfs()
+level_order = bfs(root)
+assert level_order == [5,1,6,3,10,7,100,200]
+print("PASS bfs()")
+
+# Test dfs()
+depth_order = dfs(root)
+assert depth_order == [5,1,3,6,10,7,100,200]
+print("PASS dfs()")

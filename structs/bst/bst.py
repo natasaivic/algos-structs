@@ -93,3 +93,30 @@ def postorder(node, lista_nodova):
         postorder(node.right, lista_nodova)
         
     lista_nodova.append(node.value)
+
+def bfs(node):
+    level_order = []
+    queue = []
+    queue.append(node)
+    while len(queue) > 0:
+        node = queue.pop(0)
+        if node.left is not None:
+            queue.append(node.left)
+        if node.right is not None:
+            queue.append(node.right)
+        level_order.append(node.value)
+    return level_order
+
+def dfs(node): # preorder, left to right traversal using stack data structure
+    depth_order = []
+    stack = []
+    stack.append(node)
+    while len(stack) > 0:
+        node = stack.pop()
+        if node.right is not None:
+            stack.append(node.right)
+        if node.left is not None:
+            stack.append(node.left)
+        depth_order.append(node.value)
+    return depth_order
+    
