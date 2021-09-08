@@ -1,4 +1,4 @@
-from bst import Node, insert, find, delete, inorder, preorder, postorder, bfs, dfs
+from bst import Node, insert, find, delete, inorder, preorder, postorder, bfs, dfs, mirror, is_same
 
 print("STARTING TEST")
 root = Node(4)
@@ -60,3 +60,47 @@ print("PASS bfs()")
 depth_order = dfs(root)
 assert depth_order == [5,1,3,6,10,7,100,200]
 print("PASS dfs()")
+
+# Test mirror()
+tree0 = Node(4)
+insert(tree0, 1)
+insert(tree0, 2)
+insert(tree0, 3)
+insert(tree0, 6)
+
+lista_inorder = []
+inorder(tree0, lista_inorder) # [1, 2, 3, 4, 6]
+lista_inorder.reverse() # [6, 4, 3, 2, 1]
+
+mirror(tree0)
+lista_inorder_mirror = []
+inorder(tree0, lista_inorder_mirror) # [6, 4, 3, 2, 1]
+
+assert lista_inorder == lista_inorder_mirror
+
+print("PASS mirror()")
+
+# Test is_same()
+tree1 = Node(4)
+insert(tree1, 1)
+insert(tree1, 2)
+insert(tree1, 3)
+insert(tree1, 6)
+
+tree2 = Node(4)
+insert(tree2, 1)
+insert(tree2, 2)
+insert(tree2, 3)
+insert(tree2, 6)
+
+tree3 = Node(4)
+insert(tree3, 1)
+insert(tree3, 2)
+insert(tree3, 9) # this is different
+insert(tree3, 6)
+
+assert is_same(tree1, tree2) == True
+assert is_same(tree1, tree3) == False
+assert is_same(tree2, tree3) == False
+
+print("PASS is_same()")

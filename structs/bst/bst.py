@@ -119,4 +119,29 @@ def dfs(node): # preorder, left to right traversal using stack data structure
             stack.append(node.left)
         depth_order.append(node.value)
     return depth_order
+
+def mirror(node):
+    if node is None:
+        return node
     
+    temp = node.left
+    node.left = node.right
+    node.right = temp
+
+    if node.left is not None:
+        mirror(node.left)
+    if node.right is not None:
+        mirror(node.right)
+
+def is_same(root1, root2):
+    if root1 is None and root2 is None:
+        return True
+    elif root1 is not None and root2 is None:
+        return False
+    elif root1 is None and root2 is not None:
+        return False
+    else:
+        if (root1.value == root2.value and is_same(root1.left, root2.left) and is_same(root1.right, root2.right)):
+            return True
+        else:
+            return False
