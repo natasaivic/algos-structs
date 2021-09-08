@@ -1,4 +1,4 @@
-from bst import Node, insert, find, delete, inorder, preorder, postorder, bfs, dfs, mirror, is_same
+from bst import Node, insert, find, delete, inorder, preorder, postorder, bfs, dfs, mirror, is_same, size, size_2, size_3, size_4
 
 print("STARTING TEST")
 root = Node(4)
@@ -104,3 +104,19 @@ assert is_same(tree1, tree3) == False
 assert is_same(tree2, tree3) == False
 
 print("PASS is_same()")
+
+# Test size()
+assert size(root) == 8
+print("PASS size()")
+
+# Test size_2()
+assert size_2(root) == 8
+print("PASS size_2()")
+
+# Test size_3()
+assert size_3(root) == 8
+print("PASS size_3()")
+
+# Test size_4()
+assert size_4(root) == 2
+print("PASS size_4()")

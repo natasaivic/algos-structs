@@ -145,3 +145,56 @@ def is_same(root1, root2):
             return True
         else:
             return False
+
+# Counts the number of nodes in a binary search tree, 
+# top down, using recursion. 
+def size(node):
+    if node is None:
+        return 0
+    count = 1
+    count += size(node.left)
+    count += size(node.right)
+    return count
+
+# Counts the number of nodes in a binary 
+# search tree, bottom up, using recursion.
+def size_2(node): 
+    if node is None:
+        return 0
+    return 1 + size_2(node.left) + size_2(node.right)
+
+# Counts the number of nodes in a binary search tree, 
+# using queue data structure.
+def size_3(node): 
+    if node is None:
+        return 0
+    queue = []
+    queue.append(node)
+    count = 0
+    while len(queue) > 0:
+        node = queue.pop(0)
+        count += 1
+        if node.left is not None:
+            queue.append(node.left)
+        if node.right is not None:
+            queue.append(node.right)
+    return count
+
+# Counts the number of nodes without leaf nodes 
+# in a binary search tree, using queue data structure.
+def size_4(node):
+    if node is None:
+        return 0
+    queue = []
+    queue.append(node)
+    count = 0
+    while len(queue) > 0:
+        node = queue.pop(0)
+        if node.left is not None and node.right is not None:
+            count += 1
+        if node.left is not None:
+            queue.append(node.left)
+        if node.right is not None:
+            queue.append(node.right)
+    return count
+    
