@@ -198,3 +198,51 @@ def size_4(node):
             queue.append(node.right)
     return count
     
+def find_tree_height(node):
+    if node is None:
+        return 0
+    left_height = find_tree_height(node.left)
+    right_height = find_tree_height(node.right)
+    return max(left_height, right_height) + 1
+
+def find_max_path(node):
+    if node is None:
+        return 0
+    left_sum = find_max_path(node.left)
+    right_sum = find_max_path(node.right)
+    return max(left_sum, right_sum) + node.value
+
+def find_min_path(node):
+    if node is None:
+        return 0
+    left_sum = find_min_path(node.left)
+    right_sum = find_min_path(node.right)
+    return min(left_sum, right_sum) + node.value
+
+def root_to_leaf_path(node, current_path, all_paths):
+    current_path.append(node.value)
+    if node.left is None and node.right is None:
+        all_paths.append(current_path.copy())
+    if node.left is not None:
+        root_to_leaf_path(node.left, current_path, all_paths)
+    if node.right is not None:
+        root_to_leaf_path(node.right, current_path, all_paths)
+    current_path.pop()
+    return all_paths
+
+def suma(values):
+    s = 0
+    for value in values:
+        s += value
+    return s
+
+def root_to_leaf_path_sum(node, current_path, all_paths):
+    current_path.append(node.value)
+    if node.left is None and node.right is None:
+        all_paths.append(suma(current_path))
+    if node.left is not None:
+        root_to_leaf_path_sum(node.left, current_path, all_paths)
+    if node.right is not None:
+        root_to_leaf_path_sum(node.right, current_path, all_paths)
+    current_path.pop()
+    return all_paths

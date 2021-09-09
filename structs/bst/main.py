@@ -1,4 +1,4 @@
-from bst import Node, insert, find, delete, inorder, preorder, postorder, bfs, dfs, mirror, is_same, size, size_2, size_3, size_4
+from bst import Node, insert, find, delete, inorder, preorder, postorder, bfs, dfs, mirror, is_same, size, size_2, size_3, size_4, find_tree_height, find_max_path, find_min_path, root_to_leaf_path, root_to_leaf_path_sum
 
 print("STARTING TEST")
 root = Node(4)
@@ -120,3 +120,29 @@ print("PASS size_3()")
 # Test size_4()
 assert size_4(root) == 2
 print("PASS size_4()")
+
+# Test find_tree_height()
+assert find_tree_height(root) == 5
+print("PASS find_tree_height()")
+
+# Test find_max_path()
+assert find_max_path(root) == 321
+print("PASS find_max_path()")
+
+# Test find_min_path()
+assert find_min_path(root) == 6
+print("PASS find_min_path()")
+
+# Test root_to_leaf_path()
+current_path = []
+all_paths = []
+root_to_leaf_path = root_to_leaf_path(root, current_path, all_paths)
+assert [[5, 1, 3], [5, 6, 10, 7], [5, 6, 10, 100, 200]] == root_to_leaf_path
+print("PASS root_to_leaf_path()")
+
+# Test root_to_leaf_path_sum()
+current_path_sum = []
+all_paths_sum = []
+root_to_leaf_path_sum = root_to_leaf_path_sum(root, current_path_sum, all_paths_sum)
+assert [9, 28, 321] == root_to_leaf_path_sum
+print("PASS root_to_leaf_path_sum()")
