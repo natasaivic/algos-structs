@@ -197,13 +197,28 @@ def size_4(node):
         if node.right is not None:
             queue.append(node.right)
     return count
-    
+
+# Count the number of nodes along the longest path 
+# from the root node down to the farthest leaf node
 def find_tree_height(node):
     if node is None:
         return 0
     left_height = find_tree_height(node.left)
     right_height = find_tree_height(node.right)
     return max(left_height, right_height) + 1
+
+# Find the node with minimum value in a Binary Search Tree
+def min_value(node):
+    current = node
+    while current.left is not None:
+        current = current.left
+    return current.value
+
+def max_value(node):
+    current = node
+    while current.right is not None:
+        current = current.right
+    return current.value
 
 def find_max_path(node):
     if node is None:
@@ -246,3 +261,20 @@ def root_to_leaf_path_sum(node, current_path, all_paths):
         root_to_leaf_path_sum(node.right, current_path, all_paths)
     current_path.pop()
     return all_paths
+
+# doubleTree()
+# For each node in a binary search tree, create a new duplicate node, 
+# and insert the duplicate as the left child of the original node. 
+def insert_duplicate_node(node):
+    if node is None:
+        return None
+
+    insert_duplicate_node(node.left)
+    insert_duplicate_node(node.right)
+
+    duplicate_value = node.value
+    duplicate_node = Node(duplicate_value)
+    temp = node.left
+    node.left = duplicate_node
+    duplicate_node.left = temp
+    return node
