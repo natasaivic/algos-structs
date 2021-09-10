@@ -58,41 +58,41 @@ def delete(node, value):
         node.left = delete(node.left, value)
     return node
 
-def inorder(node, lista_nodova):
+def inorder(node, node_list):
     if node is None:
         return
 
     if node.left is not None:
-        inorder(node.left, lista_nodova)
+        inorder(node.left, node_list)
 
-    lista_nodova.append(node.value)
+    node_list.append(node.value)
 
     if node.right is not None:
-        inorder(node.right, lista_nodova)
+        inorder(node.right, node_list)
 
-def preorder(node, lista_nodova):
+def preorder(node, node_list):
     if node is None:
         return
 
-    lista_nodova.append(node.value)
+    node_list.append(node.value)
 
     if node.left is not None:
-        preorder(node.left, lista_nodova)
+        preorder(node.left, node_list)
 
     if node.right is not None:
-        preorder(node.right, lista_nodova)
+        preorder(node.right, node_list)
 
-def postorder(node, lista_nodova):
+def postorder(node, node_list):
     if node is None:
         return
 
     if node.left is not None:
-        postorder(node.left, lista_nodova)
+        postorder(node.left, node_list)
 
     if node.right is not None:
-        postorder(node.right, lista_nodova)
+        postorder(node.right, node_list)
         
-    lista_nodova.append(node.value)
+    node_list.append(node.value)
 
 def bfs(node):
     level_order = []
