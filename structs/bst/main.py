@@ -1,4 +1,4 @@
-from bst import Node, insert, find, delete, inorder, preorder, postorder, bfs, dfs, mirror, is_same, size, size_2, size_3, size_4, find_tree_height, min_value, max_value, find_max_path, find_min_path, root_to_leaf_path, root_to_leaf_path_sum, insert_duplicate_node
+from bst import Node, insert, find, delete, inorder, preorder, postorder, bfs, dfs, mirror, is_same, size, size_2, size_3, size_4, find_tree_height, min_value, max_value, find_max_path, find_min_path, root_to_leaf_path, root_to_leaf_path_sum, insert_duplicate_node, getLevel
 
 print("STARTING TEST")
 root = Node(4)
@@ -160,3 +160,9 @@ insert_duplicate_node(root)
 level_order = bfs(root)
 assert level_order == [5, 5, 6, 1, 6, 10, 1, 3, 10, 100, 3, 7, 100, 200, 7, 200]
 print("PASS insert_duplicate_node()")
+
+# Test getLevel()
+assert getLevel(root, 400) == 0
+assert getLevel(root, 10) == 3
+assert getLevel(root, 5) == 1
+print("PASS getLevel()")

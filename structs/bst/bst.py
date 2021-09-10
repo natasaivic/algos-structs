@@ -107,7 +107,8 @@ def bfs(node):
         level_order.append(node.value)
     return level_order
 
-def dfs(node): # preorder, left to right traversal using stack data structure
+# preorder, left to right traversal using stack data structure
+def dfs(node): 
     depth_order = []
     stack = []
     stack.append(node)
@@ -278,3 +279,18 @@ def insert_duplicate_node(node):
     node.left = duplicate_node
     duplicate_node.left = temp
     return node
+
+# Get Level of a node
+# helper function for getlevel()
+def getLevelHelper(node, value, level):
+    if node is None:
+        return 0
+    elif node.value == value:
+        return level
+    elif value > node.value:
+        return getLevelHelper(node.right, value, level + 1)
+    else:
+        return getLevelHelper(node.left, value, level + 1)
+
+def getLevel(node, value):
+    return getLevelHelper(node, value, 1)
