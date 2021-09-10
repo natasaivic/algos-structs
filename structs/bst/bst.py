@@ -294,3 +294,35 @@ def getLevelHelper(node, value, level):
 
 def getLevel(node, value):
     return getLevelHelper(node, value, 1)
+
+# Get all nodes by level of a binary tree
+def nodes_by_level(node):
+    if node is None:
+        return
+
+    queue = []
+    queue.append(node)
+
+    elements = 0
+    max_current_level = 1
+    next_level_elements = 0
+    current_level = []
+    while len(queue) > 0:
+        node = queue.pop(0)
+
+        current_level.append(node.value)
+        elements += 1
+
+        if node.left is not None:
+            queue.append(node.left)
+            next_level_elements += 1
+        if node.right is not None:
+            next_level_elements += 1
+            queue.append(node.right)
+        
+        if elements == max_current_level:
+            print(current_level)
+            current_level = []
+            elements = 0
+            max_current_level = next_level_elements
+            next_level_elements = 0
