@@ -129,10 +129,8 @@ def mirror(node):
     node.left = node.right
     node.right = temp
 
-    if node.left is not None:
-        mirror(node.left)
-    if node.right is not None:
-        mirror(node.right)
+    mirror(node.left)
+    mirror(node.right)
 
 def is_same(root1, root2):
     if root1 is None and root2 is None:
