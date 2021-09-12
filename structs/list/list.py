@@ -42,6 +42,8 @@ class List:
             return None
         current = self.head
         for i in range(1, n):
+            if current is None:
+                return None
             current = current.next
         return current.value
     
