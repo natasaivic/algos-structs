@@ -10,6 +10,8 @@ class Hashmap:
     def __init__(self):
         self.bucket = [None] * 1000
 
+    # Inserts a key-value pair into the hash map. 
+    # If the value already exists in the hash map, update the value.
     def put(self, key, value):
         index = hash(key) % len(self.bucket)
 
@@ -29,6 +31,8 @@ class Hashmap:
             return
         current.next = Item(key, value)
     
+    # Returns the value to which the specified key is mapped, 
+    # or “No record found” if this map contains no mapping for the key.
     def get(self, key, value):
         index = hash(key) % len(self.bucket)
 
@@ -42,3 +46,26 @@ class Hashmap:
             current = current.next
         
         return None
+
+    # Removes the mapping for the specific key 
+    # if the hash map contains the mapping for the key.
+    def delete(self, key):
+        index = hash(key) % len(self.bucket)
+
+        if self.bucket[index] is None:
+            return False
+        
+        if self.bucket[index].key == key:
+            self.bucket[index] = self.bucket[index].next
+            return True
+        
+        previous = self.bucket[index]
+        current = self.bucket[index].next
+        while current is not None:
+            if current.key == key:
+                previous.next = current.next
+                return True
+            previous = current
+            current = current.next
+
+        return False
