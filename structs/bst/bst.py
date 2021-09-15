@@ -324,3 +324,16 @@ def nodes_by_level(node):
             elements = 0
             max_current_level = next_level_elements
             next_level_elements = 0
+
+INT_MAX = 1000
+INT_MIN = -1000
+def is_bst(node):
+    return is_bst_helper(node, INT_MAX, INT_MIN)
+
+def is_bst_helper(node, mini, maxi):
+    if node is None:
+        return True
+    if node.value < mini or node.value > maxi:
+        return False
+    return is_bst_helper(node.left, mini, node.value - 1) and is_bst_helper(node.right, node.value + 1, maxi)
+    
