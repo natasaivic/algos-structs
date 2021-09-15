@@ -33,7 +33,7 @@ class Map:
     
     # Returns the value to which the specified key is mapped, 
     # or “No record found” if this map contains no mapping for the key.
-    def get(self, key, value):
+    def get(self, key):
         index = hash(key) % len(self.bucket)
 
         if self.bucket[index] is None:
