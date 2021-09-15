@@ -6,7 +6,7 @@ class Item:
         self.value = value
         self.next = None
 
-class Hashmap:
+class Map:
     def __init__(self):
         self.bucket = [None] * 1000
 
