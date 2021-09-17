@@ -114,5 +114,18 @@ class List:
             current = current.next
         return suma
 
+    def is_cyclic(self, head):
+        slow = self.head
+        fast = self.head
+
+        while fast.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+            if fast == slow:
+                print(f"{fast} -> {slow}")
+                return True
+        return False
+
     def __repr__(self):
         return f"{self.head}"
+        

@@ -1,4 +1,4 @@
-from list import List
+from list import List, Node
 
 print("STARTING TEST")
 my_list = List()
