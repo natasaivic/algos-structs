@@ -17,3 +17,19 @@ def count_letters(sentence):
         counts[letter] += 1
     
     return counts
+
+def count_duplicates(word):
+    duplicates = {}
+    counts = {}
+
+    for letter in word:
+        if letter not in counts:
+            counts[letter] = 0
+        counts[letter] += 1
+    
+    for letter in counts:
+        if counts[letter] > 1:
+            duplicates[letter] = counts[letter]
+    
+    return duplicates
+    
