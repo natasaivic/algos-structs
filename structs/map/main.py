@@ -1,4 +1,5 @@
 from map import Map
+from count import count_words, count_letters
 
 # Custom Map
 m = Map()
@@ -28,3 +29,11 @@ n['b'] = 1 # put
 
 assert n.get('a') == 0
 assert n.get('b') == 1
+
+# Test count_words()
+s = "the quick brown fox jumps over the lazy dog and the dog does not mind it at all the fox is just a fox"
+count_words(s) 
+
+# Test count_letters
+s = "the quick brown fox jumps over the lazy dog and the dog does not mind it at all the fox is just a fox"
+count_words(s) 
