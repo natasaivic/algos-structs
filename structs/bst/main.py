@@ -1,4 +1,4 @@
-from bst import Node, insert, find, delete, inorder, preorder, postorder, bfs, dfs, mirror, is_same, size, size_2, size_3, size_4, find_tree_height, min_value, max_value, find_max_path, find_min_path, root_to_leaf_path, root_to_leaf_path_sum, insert_duplicate_node, getLevel, nodes_by_level
+from bst import Node, insert, find, delete, inorder, preorder, postorder, bfs, dfs, mirror, is_same, size, size_2, size_3, size_4, find_tree_height, min_value, max_value, find_max_path, find_min_path, root_to_leaf_path, root_to_leaf_path_sum, insert_duplicate_node, getLevel, nodes_by_level, isSymmetric
 
 print("STARTING TEST")
 root = Node(4)
@@ -166,3 +166,7 @@ assert getLevel(root, 400) == 0
 assert getLevel(root, 10) == 3
 assert getLevel(root, 5) == 1
 print("PASS getLevel()")
+
+# Test isSymmetric()
+assert isSymmetric(root) is False
+print("PASS isSymmetric()")

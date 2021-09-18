@@ -336,4 +336,16 @@ def is_bst_helper(node, mini, maxi):
     if node.value < mini or node.value > maxi:
         return False
     return is_bst_helper(node.left, mini, node.value - 1) and is_bst_helper(node.right, node.value + 1, maxi)
-    
+
+def isSymmetricHelper(node1, node2):
+    if node1 is None and node2 is None:
+        return True
+    elif node1 is None or node2 is None:
+        return False
+    else:
+        return node1.value == node2.value and isSymmetricHelper(node1.left, node2.right) and isSymmetricHelper(node1.right, node2.left)
+
+def isSymmetric(node):
+    if node is None:
+        return True
+    return isSymmetricHelper(node.left, node.right)
