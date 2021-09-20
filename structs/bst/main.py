@@ -1,4 +1,4 @@
-from bst import Node, insert, find, delete, inorder, preorder, postorder, bfs, dfs, mirror, is_same, size, size_2, size_3, size_4, find_tree_height, min_value, max_value, find_max_path, find_min_path, root_to_leaf_path, root_to_leaf_path_sum, insert_duplicate_node, getLevel, nodes_by_level, isSymmetric
+from bst import Node, insert, find, delete, inorder, preorder, postorder, bfs, level_order, dfs, mirror, is_same, size, size_2, size_3, size_4, find_tree_height, min_value, max_value, find_max_path, find_min_path, root_to_leaf_path, root_to_leaf_path_sum, insert_duplicate_node, getLevel, nodes_by_level, isSymmetric
 
 print("STARTING TEST")
 root = Node(4)
@@ -52,9 +52,15 @@ assert lista_postorder == [3, 1, 7, 200, 100, 10, 6, 5]
 print("PASS postorder()")
 
 # Test bfs()
-level_order = bfs(root)
-assert level_order == [5,1,6,3,10,7,100,200]
+expected = bfs(root)
+assert expected == [5,1,6,3,10,7,100,200]
 print("PASS bfs()")
+
+# Test level_order()
+rez = level_order(root)
+print(rez)
+assert rez == [[5],[1,6],[3,10],[7,100],[200]]
+print("PASS level_order()")
 
 # Test dfs()
 depth_order = dfs(root)

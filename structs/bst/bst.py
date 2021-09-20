@@ -107,6 +107,29 @@ def bfs(node):
         level_order.append(node.value)
     return level_order
 
+# Binary Tree Level Order Traversal 
+# returns the level order traversal of its nodes' values, level by level
+
+def level_order(node):
+    if node is None:
+        return []
+
+    all_levels = []
+    queue = []
+    queue.append(node)
+    while len(queue) > 0:
+        by_level = []
+        for i in range(len(queue)):
+            node = queue.pop(0)
+            by_level.append(node.value)
+            if node.left is not None:
+                queue.append(node.left)
+            if node.right is not None:
+                queue.append(node.right)
+        all_levels.append(by_level)
+
+    return all_levels
+
 # preorder, left to right traversal using stack data structure
 def dfs(node): 
     depth_order = []
