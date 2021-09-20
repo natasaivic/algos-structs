@@ -1,4 +1,4 @@
-from bst import Node, insert, find, delete, inorder, preorder, postorder, bfs, level_order, dfs, mirror, is_same, size, size_2, size_3, size_4, find_tree_height, min_value, max_value, find_max_path, find_min_path, root_to_leaf_path, root_to_leaf_path_sum, insert_duplicate_node, getLevel, nodes_by_level, isSymmetric
+from bst import Node, insert, find, delete, inorder, preorder, postorder, bfs, level_order, dfs, mirror, is_same, size, size_2, size_3, size_4, find_tree_height, min_value, max_value, find_max_path, find_min_path, root_to_leaf_path, root_to_leaf_path_sum, insert_duplicate_node, getLevel, nodes_by_level, isSymmetric, invertTree
 
 print("STARTING TEST")
 root = Node(4)
@@ -176,3 +176,10 @@ print("PASS getLevel()")
 # Test isSymmetric()
 assert isSymmetric(root) is False
 print("PASS isSymmetric()")
+
+# Test invertTree()
+invertTree(root)
+expected_backorder = []
+inorder(root, expected_backorder)
+assert expected_backorder == [200, 200, 100, 100, 10, 10, 7, 7, 6, 6, 5, 5, 3, 3, 1, 1]
+print("PASS invertTree()")

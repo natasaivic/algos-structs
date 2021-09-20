@@ -372,3 +372,17 @@ def isSymmetric(node):
     if node is None:
         return True
     return isSymmetricHelper(node.left, node.right)
+
+def invertTree(node):
+    stack = []
+    stack.append(node)
+    while len(stack) > 0:
+        node = stack.pop()
+        if node is not None:
+            temp = node.left
+            node.left = node.right
+            node.right = temp
+            for child in [node.left, node.right]:
+                stack.append(child)
+    
+    return node
