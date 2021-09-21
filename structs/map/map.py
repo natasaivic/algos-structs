@@ -20,16 +20,15 @@ class Map:
             return
         
         current = self.bucket[index]
-        while current.next is not None:
+        while current is not None:
             if current.key == key:
                 current.value = value
                 return
             current = current.next
 
-        if current.key == key:
-            current.value = value
-            return
-        current.next = Item(key, value)
+        item = Item(key, value)
+        item.next = self.bucket[index]
+        self.bucket[index] = item
     
     # Returns the value to which the specified key is mapped, 
     # or “No record found” if this map contains no mapping for the key.

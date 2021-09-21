@@ -168,6 +168,14 @@ def is_same(root1, root2):
         else:
             return False
 
+def is_same_tree(root, subRoot):
+    if root is None and subRoot is None:
+        return True
+    elif root is None or subRoot is None:
+        return False
+    if root.value == subRoot.value:
+        return is_same_tree(root.left, subRoot.left) and is_same_tree(root.right, subRoot.right)
+        
 # Counts the number of nodes in a binary search tree, 
 # top down, using recursion. 
 def size(node):
@@ -373,16 +381,31 @@ def isSymmetric(node):
         return True
     return isSymmetricHelper(node.left, node.right)
 
+# using stack data structure
 def invertTree(node):
+    if node is None:
+        return None
+
     stack = []
     stack.append(node)
     while len(stack) > 0:
         node = stack.pop()
-        if node is not None:
-            temp = node.left
-            node.left = node.right
-            node.right = temp
-            for child in [node.left, node.right]:
-                stack.append(child)
+        temp = node.left
+        node.left = node.right
+        node.right = temp
+        if node.left is not None:
+            stack.append(node.left)
+        if node.right is not None:
+            stack.append(node.right)
     
     return node
+
+def isSubtree(root, subRoot):
+    if subRoot is None:
+        return True
+    if root is None:
+        return False
+    if root.value == subRoot.value:
+        if is_same_tree(root.left, subRoot.left) and is_same_tree(root.right, subRoot.right):
+            return True
+    return isSubtree(root.left, subRoot) or isSubtree(root.right, subRoot)
