@@ -316,6 +316,25 @@ def hasPathSum(node, targetSum):
     
     return False
 
+def sumOfLeftLeaves(node):
+    if node is None:
+        return
+
+    sum = 0
+    stack = []
+    stack.append((node, False))
+    while len(stack) > 0:
+        (current, is_left) = stack.pop()
+        if is_left is True:
+            sum += current.value
+        
+        if current.left is not None:
+            stack.append((current.left, True))
+        
+        if current.right is not None:
+            stack.append((current.right, False))
+    return sum
+
 # doubleTree()
 # For each node in a binary search tree, create a new duplicate node, 
 # and insert the duplicate as the left child of the original node. 
