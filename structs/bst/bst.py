@@ -292,6 +292,23 @@ def root_to_leaf_path_sum(node, current_path, all_paths):
     current_path.pop()
     return all_paths
 
+# iterative 
+def binaryTreePaths(node):
+    res = []
+    stack = []
+    stack.append((node, ""))
+    while len(stack) > 0:
+        current, path = stack.pop()
+        if current.left is None and current.right is None:
+            res.append(path+str(current.value))
+        
+        if current.left is not None:
+            stack.append((current.left, path+str(current.value)+"->"))
+        if current.right is not None:
+            stack.append((current.right, path+str(current.value)+"->"))
+
+    return res
+
 # Given the root of a binary tree and an integer targetSum, 
 # return true if the tree has a root-to-leaf path 
 # such that adding up all the values along the path equals targetSum.
