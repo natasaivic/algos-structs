@@ -1,4 +1,4 @@
-from bst import Node, insert, find, delete, inorder, preorder, postorder, bfs, level_order, dfs, mirror, is_same, size, size_2, size_3, size_4, find_tree_height, min_value, max_value, find_max_path, find_min_path, root_to_leaf_path, root_to_leaf_path_sum, insert_duplicate_node, getLevel, nodes_by_level, isSymmetric, invertTree, is_same_tree, isSubtree
+from bst import Node, insert, find, delete, inorder, preorder, postorder, bfs, level_order, dfs, mirror, is_same, size, size_2, size_3, size_4, find_tree_height, min_value, max_value, find_max_path, find_min_path, root_to_leaf_path, root_to_leaf_path_sum, hasPathSum, insert_duplicate_node, getLevel, nodes_by_level, isSymmetric, invertTree, is_same_tree, isSubtree
 
 print("STARTING TEST")
 root = Node(4)
@@ -160,6 +160,10 @@ all_paths_sum = []
 root_to_leaf_path_sum = root_to_leaf_path_sum(root, current_path_sum, all_paths_sum)
 assert [9, 28, 321] == root_to_leaf_path_sum
 print("PASS root_to_leaf_path_sum()")
+
+# Test hasPathSum()
+assert hasPathSum(root, 321) == True
+print("PASS hasPathSum()")
 
 # Test insert_duplicate_node()
 insert_duplicate_node(root)

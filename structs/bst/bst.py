@@ -292,6 +292,30 @@ def root_to_leaf_path_sum(node, current_path, all_paths):
     current_path.pop()
     return all_paths
 
+# Given the root of a binary tree and an integer targetSum, 
+# return true if the tree has a root-to-leaf path 
+# such that adding up all the values along the path equals targetSum.
+def hasPathSum(node, targetSum):
+    if node is None:
+        return False
+
+    stack = []
+    stack.append((node, node.value))
+    while len(stack) > 0:
+        (current, sum) = stack.pop()
+
+        if current.right is None and current.left is None:
+            if sum == targetSum:
+                return True
+        
+        if current.left is not None:
+            stack.append((current.left, sum + current.left.value))
+
+        if current.right is not None:
+            stack.append((current.right, sum + current.right.value))
+    
+    return False
+
 # doubleTree()
 # For each node in a binary search tree, create a new duplicate node, 
 # and insert the duplicate as the left child of the original node. 
