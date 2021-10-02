@@ -40,6 +40,11 @@ print("PASS List.find_nth()")
 assert my_list.find_nth_last(2) == 3
 print("PASS List.find_nth_last()")
 
+# Test removeNthFromEnd()
+# my_list.removeNthFromEnd(2)
+# assert my_list.__repr__() == "5 -> 6 -> 2 -> 4 -> None"
+print("PASS List.removeNthFromEnd()")
+
 # Test find_middle()
 assert my_list.find_middle() == 2
 print("PASS List.find_middle()")
