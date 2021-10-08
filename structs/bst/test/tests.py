@@ -331,35 +331,138 @@ class BstTest(unittest.TestCase):
         self.assertEqual(expected, [[5, 1, 3], [5, 7, 6], [5, 7, 10, 100, 200]])
 
     def test_root_to_leaf_path_sum(self):
-        pass
+        root = Node(5)
+        insert(root, 1)
+        insert(root, 3)
+        insert(root, 7)
+        insert(root, 6)
+        insert(root, 10)
+        insert(root, 100)
+        insert(root, 200)
+
+        current_path_sum = []
+        all_paths_sum = []
+        expected = root_to_leaf_path_sum(root, current_path_sum, all_paths_sum)
+        self.assertEqual(expected, [9, 18, 322]) == expected
     
     def test_hasPathSum(self):
-        pass
+        root = Node(5)
+        insert(root, 1)
+        insert(root, 3)
+        insert(root, 7)
+        insert(root, 6)
+        insert(root, 10)
+        insert(root, 100)
+        insert(root, 200)
+
+        self.assertEqual(hasPathSum(root, 9), True)
+        self.assertTrue(hasPathSum(root, 9))
+        self.assertEqual(hasPathSum(root, 40), False)
+        self.assertFalse(hasPathSum(root, 40))
+        self.assertEqual(hasPathSum(root, 322), True)
+        self.assertTrue(hasPathSum(root, 322))
 
     def test_sumOfLeftLeaves(self):
-        pass
+        root = Node(5)
+        insert(root, 1)
+        insert(root, 3)
+        insert(root, 7)
+        insert(root, 6)
+        insert(root, 10)
+        insert(root, 100)
+        insert(root, 200)
+
+        self.assertEqual(sumOfLeftLeaves(root), 7)
 
     def test_insert_duplicate_node(self):
-        pass
+        root = Node(5)
+        insert(root, 1)
+        insert(root, 3)
+        insert(root, 7)
+        insert(root, 6)
+        insert(root, 10)
+        insert(root, 100)
+        insert(root, 200)
+
+        insert_duplicate_node(root)
+        expected = bfs(root)
+        self.assertEqual(expected, [5, 5, 7, 1, 7, 10, 1, 3, 6, 10, 100, 3, 6, 100, 200, 200])
 
     def test_getLevel(self):
-        pass
+        root = Node(5)
+        insert(root, 1)
+        insert(root, 3)
+        insert(root, 7)
+        insert(root, 6)
+        insert(root, 10)
+        insert(root, 100)
+        insert(root, 200)
+
+        self.assertEqual(getLevel(root, 400), 0)
+        self.assertEqual(getLevel(root, 10), 3)
+        self.assertEqual(getLevel(root, 5), 1)
 
     def test_nodes_by_level(self):
+        root = Node(5)
+        insert(root, 1)
+        insert(root, 3)
+        insert(root, 7)
+        insert(root, 6)
+        insert(root, 10)
+        insert(root, 100)
+        insert(root, 200)
+
+        pass
+    
+    def test_is_bst(self):
         pass
 
     def test_isSymmetric(self):
-        pass
+        root = Node(5)
+        insert(root, 1)
+        insert(root, 3)
+        insert(root, 7)
+        insert(root, 6)
+        insert(root, 10)
+        insert(root, 100)
+        insert(root, 200)
+
+        self.assertFalse(isSymmetric(root))
 
     def test_invertTree(self):
-        pass
+        root = Node(5)
+        insert(root, 1)
+        insert(root, 3)
+        insert(root, 7)
+        insert(root, 6)
+        insert(root, 10)
+        insert(root, 100)
+        insert(root, 200)
 
-    def test_is_same_tree(self):
-        pass
+        invertTree(root)
+        expected_backorder = []
+        inorder(root, expected_backorder)
+        self.assertEqual(expected_backorder, [200, 100, 10, 7, 6, 5, 3, 1]) 
 
     def test_isSubtree(self):
-        pass
+        root = Node(50)
+        insert(root, 40)
+        insert(root, 30)
+        insert(root, 45)
+        insert(root, 55)
+        subRoot = Node(40)
+        insert(subRoot, 30)
+        insert(subRoot, 45)
+        
+        expected = isSubtree(root, subRoot) 
+        self.assertTrue(expected)
 
+        subRoot2 = Node(40)
+        insert(subRoot2, 28)
+        insert(subRoot2, 43)
+
+        expected2 = isSubtree(root, subRoot2) 
+        self.assertFalse(expected2)
 
 if __name__ == '__main__':
     unittest.main()
