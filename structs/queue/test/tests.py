@@ -1,5 +1,6 @@
 import sys
-sys.path.insert(0, '..')
+from os.path import dirname, abspath
+sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 import unittest
 from queue import Queue

@@ -1,5 +1,6 @@
 import sys
-sys.path.insert(0, '..')
+from os.path import dirname, abspath
+sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 import unittest
 from list import List
@@ -37,7 +38,7 @@ class ListTest(unittest.TestCase):
         list.append(7)
         list.append(10)
         list.delete(10)
-        
+
         self.assertEqual(list.__repr__(), "1 -> 2 -> 3 -> 4 -> 6 -> 7 -> None")
 
     def test_prepend(self):
@@ -68,8 +69,8 @@ class ListTest(unittest.TestCase):
         list.append(8)
         list.append(0)
         list.append(0)
-        list.append(1)    
-        
+        list.append(1)
+
         self.assertEqual(list.find_nth_last(1), 1)
         self.assertEqual(list.find_nth_last(2), 0)
 
@@ -80,7 +81,7 @@ class ListTest(unittest.TestCase):
         list.append(8)
         list.append(0)
         list.append(0)
-        list.append(1) 
+        list.append(1)
         list.removeNthFromEnd(1)
 
         self.assertEqual(list.__repr__(), "2 -> 5 -> 8 -> 0 -> 0 -> None")
@@ -92,7 +93,7 @@ class ListTest(unittest.TestCase):
         list.append(8)
         list.append(0)
         list.append(0)
-        
+
         self.assertEqual(list.find_middle(), 8)
 
     def test_replace(self):
@@ -104,7 +105,7 @@ class ListTest(unittest.TestCase):
         list.append(0)
         list.append(1)
         list.replace(2, 6)
-        
+
         self.assertEqual(list.__repr__(), "6 -> 5 -> 8 -> 0 -> 0 -> 1 -> None")
 
         list.replace(5, 6)
@@ -135,6 +136,7 @@ class ListTest(unittest.TestCase):
         list.append(1)
 
         self.assertFalse(list.is_empty())
+
 
 if __name__ == '__main__':
     unittest.main()
