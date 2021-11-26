@@ -40,6 +40,7 @@ class List:
     def find_nth(self, n):
         if self.head is None:
             return None
+            
         current = self.head
         for i in range(1, n):
             if current is None:

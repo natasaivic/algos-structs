@@ -95,6 +95,9 @@ def postorder(node, node_list):
     node_list.append(node.value)
 
 def bfs(node):
+    if node is None:
+        return []
+        
     level_order = []
     queue = []
     queue.append(node)
