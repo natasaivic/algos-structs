@@ -97,7 +97,7 @@ def postorder(node, node_list):
 def bfs(node):
     if node is None:
         return []
-        
+
     level_order = []
     queue = []
     queue.append(node)
@@ -135,6 +135,9 @@ def level_order(node):
 
 # preorder, left to right traversal using stack data structure
 def dfs(node): 
+    if node is None:
+        return []
+
     depth_order = []
     stack = []
     stack.append(node)
@@ -149,7 +152,7 @@ def dfs(node):
 
 def mirror(node):
     if node is None:
-        return node
+        return
     
     temp = node.left
     node.left = node.right
@@ -168,8 +171,7 @@ def is_same(root1, root2):
     else:
         if (root1.value == root2.value and is_same(root1.left, root2.left) and is_same(root1.right, root2.right)):
             return True
-        else:
-            return False
+        return False
 
 def is_same_tree(root, subRoot):
     if root is None and subRoot is None:
