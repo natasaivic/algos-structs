@@ -70,6 +70,25 @@ def inorder(node, node_list):
     if node.right is not None:
         inorder(node.right, node_list)
 
+# Iterative function for inorder tree traversal
+def inorder_iterative(node):
+    current = node
+    depth_order = []
+    stack = []
+
+    while True:
+        if current is not None:
+            stack.append(current)
+            current = current.left
+        elif len(stack) > 0:
+            current = stack.pop()
+            depth_order.append(current.value)
+            current = current.right
+        else:
+            break
+    
+    return depth_order
+
 def preorder(node, node_list):
     if node is None:
         return
