@@ -169,6 +169,26 @@ def dfs(node):
         depth_order.append(node.value)
     return depth_order
 
+# postorder traversal using stack data structure
+def postorder_iterative(node):
+    if node is None:
+        return
+
+    depth_order = [] 
+    stack = [] 
+    stack.append(node)
+  
+    while len(stack) > 0: 
+        current = stack.pop() 
+        depth_order.append(current.value)
+        if current.left is not None: 
+            stack.append(current.left)
+        if current.right is not None:
+            stack.append(current.right)
+    
+    while depth_order:
+        print(depth_order.pop(), end=' ')
+
 def mirror(node):
     if node is None:
         return
