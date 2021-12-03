@@ -4,8 +4,8 @@ sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 import unittest
 from bst import (
-    Node, insert, find, delete, inorder, preorder, 
-    postorder, bfs, level_order, dfs, mirror, is_same, size, 
+    Node, insert, find, find_min, delete, inorder, inorder_iterative, preorder, dfs,
+    postorder, postorder_iterative, bfs, level_order, mirror, is_same, size, 
     size_2, size_3, size_4, find_tree_height, min_value, 
     max_value, find_max_path, find_min_path, root_to_leaf_path, 
     root_to_leaf_path_sum, hasPathSum, sumOfLeftLeaves, insert_duplicate_node, 
@@ -80,6 +80,17 @@ class BstTest(unittest.TestCase):
         lista_inorder = []
         inorder(root, lista_inorder)
         self.assertEqual(lista_inorder, [1, 3, 4, 5, 6, 7, 10, 100, 200])
+    
+    def test_inorder_iterative(self):
+        root = Node(10)
+        insert(root, 5)
+        insert(root, 15)
+        insert(root, 1)
+        insert(root, 6)
+        insert(root, 11)
+        insert(root, 16)
+
+        self.assertEqual(inorder_iterative(root), [1, 5, 6, 10, 11, 15, 16])
 
     def test_preorder(self):
         root = Node(4)
@@ -96,6 +107,17 @@ class BstTest(unittest.TestCase):
         preorder(root, lista_preorder)
         self.assertEqual(lista_preorder, [4, 1, 3, 6, 5, 7, 10, 100, 200])
 
+    def test_preorder_iterative(self):
+        root = Node(10)
+        insert(root, 5)
+        insert(root, 15)
+        insert(root, 1)
+        insert(root, 6)
+        insert(root, 11)
+        insert(root, 16)
+
+        self.assertEqual(dfs(root), [10, 5, 1, 6, 15, 11, 16])
+
     def test_postorder(self):
         root = Node(4)
         insert(root, 1)
@@ -111,6 +133,17 @@ class BstTest(unittest.TestCase):
         postorder(root, lista_postorder)
         self.assertEqual(lista_postorder, [3, 1, 5, 200, 100, 10, 7, 6, 4])
     
+    def test_postorder_iterative(self):
+        root = Node(10)
+        insert(root, 5)
+        insert(root, 15)
+        insert(root, 1)
+        insert(root, 6)
+        insert(root, 11)
+        insert(root, 16)
+
+        self.assertEqual(postorder_iterative(root), [1, 6, 5, 11, 16, 15, 10])
+       
     # Level order using queue data structure
     def test_bfs(self):
         root = Node(4)

@@ -137,8 +137,12 @@ def postorder_iterative(node):
         if current.right is not None:
             stack.append(current.right)
     
+    # while depth_order:
+    #     print(depth_order.pop(), end=' ')
+    postorder =[]
     while depth_order:
-        print(depth_order.pop(), end=' ')
+        postorder.append(depth_order.pop())
+    return postorder 
 
 def bfs(node):
     if node is None:
