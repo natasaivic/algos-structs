@@ -58,17 +58,14 @@ def delete(node, value):
         node.left = delete(node.left, value)
     return node
 
+# Recursive function for inorder tree traversal
 def inorder(node, node_list):
     if node is None:
         return
 
-    if node.left is not None:
-        inorder(node.left, node_list)
-
+    inorder(node.left, node_list)
     node_list.append(node.value)
-
-    if node.right is not None:
-        inorder(node.right, node_list)
+    inorder(node.right, node_list)
 
 # Iterative function for inorder tree traversal
 def inorder_iterative(node):
@@ -89,29 +86,59 @@ def inorder_iterative(node):
     
     return depth_order
 
+# Recursive function for preorder tree traversal
 def preorder(node, node_list):
     if node is None:
         return
 
     node_list.append(node.value)
+    preorder(node.left, node_list)
+    preorder(node.right, node_list)
 
-    if node.left is not None:
-        preorder(node.left, node_list)
+# Iterative preorder, left to right traversal using stack data structure
+def dfs(node): 
+    depth_order = []
+    stack = []
+    stack.append(node)
 
-    if node.right is not None:
-        preorder(node.right, node_list)
+    while len(stack) > 0:
+        node = stack.pop()
+        if node.right is not None:
+            stack.append(node.right)
+        if node.left is not None:
+            stack.append(node.left)
+        depth_order.append(node.value)
 
+    return depth_order
+
+# Recursive function for postorder tree traversal
 def postorder(node, node_list):
     if node is None:
         return
 
-    if node.left is not None:
-        postorder(node.left, node_list)
-
-    if node.right is not None:
-        postorder(node.right, node_list)
-        
+    postorder(node.left, node_list)
+    postorder(node.right, node_list)  
     node_list.append(node.value)
+
+# Iterative postorder traversal using stack data structure
+def postorder_iterative(node):
+    if node is None:
+        return
+
+    depth_order = [] 
+    stack = [] 
+    stack.append(node)
+  
+    while len(stack) > 0: 
+        current = stack.pop() 
+        depth_order.append(current.value)
+        if current.left is not None: 
+            stack.append(current.left)
+        if current.right is not None:
+            stack.append(current.right)
+    
+    while depth_order:
+        print(depth_order.pop(), end=' ')
 
 def bfs(node):
     if node is None:
@@ -151,43 +178,6 @@ def level_order(node):
         all_levels.append(by_level)
 
     return all_levels
-
-# preorder, left to right traversal using stack data structure
-def dfs(node): 
-    if node is None:
-        return []
-
-    depth_order = []
-    stack = []
-    stack.append(node)
-    while len(stack) > 0:
-        node = stack.pop()
-        if node.right is not None:
-            stack.append(node.right)
-        if node.left is not None:
-            stack.append(node.left)
-        depth_order.append(node.value)
-    return depth_order
-
-# postorder traversal using stack data structure
-def postorder_iterative(node):
-    if node is None:
-        return
-
-    depth_order = [] 
-    stack = [] 
-    stack.append(node)
-  
-    while len(stack) > 0: 
-        current = stack.pop() 
-        depth_order.append(current.value)
-        if current.left is not None: 
-            stack.append(current.left)
-        if current.right is not None:
-            stack.append(current.right)
-    
-    while depth_order:
-        print(depth_order.pop(), end=' ')
 
 def mirror(node):
     if node is None:
