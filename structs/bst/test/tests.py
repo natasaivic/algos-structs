@@ -4,8 +4,8 @@ sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 import unittest
 from bst import (
-    Node, insert, find, find_min, delete, inorder, inorder_iterative, preorder, dfs,
-    postorder, postorder_iterative, bfs, level_order, mirror, is_same, size, 
+    Node, insert, find, find_min, delete, inorder, inorder_2, inorder_iterative, preorder, preorder_2, dfs,
+    postorder, postorder_2, postorder_iterative, bfs, level_order, mirror, is_same, size, 
     size_2, size_3, size_4, find_tree_height, min_value, 
     max_value, find_max_path, find_min_path, root_to_leaf_path, 
     root_to_leaf_path_sum, hasPathSum, sumOfLeftLeaves, insert_duplicate_node, 
@@ -81,6 +81,19 @@ class BstTest(unittest.TestCase):
         inorder(root, lista_inorder)
         self.assertEqual(lista_inorder, [1, 3, 4, 5, 6, 7, 10, 100, 200])
     
+    def test_inorder_2(self):
+        root = Node(4)
+        insert(root, 1)
+        insert(root, 3)
+        insert(root, 6)
+        insert(root, 7)
+        insert(root, 5)
+        insert(root, 10)
+        insert(root, 100)
+        insert(root, 200)
+        
+        self.assertEqual(inorder_2(root), [1, 3, 4, 5, 6, 7, 10, 100, 200])
+
     def test_inorder_iterative(self):
         root = Node(10)
         insert(root, 5)
@@ -106,6 +119,20 @@ class BstTest(unittest.TestCase):
         lista_preorder = []
         preorder(root, lista_preorder)
         self.assertEqual(lista_preorder, [4, 1, 3, 6, 5, 7, 10, 100, 200])
+
+    def test_preorder_2(self):
+        root = Node(4)
+        insert(root, 1)
+        insert(root, 3)
+        insert(root, 6)
+        insert(root, 7)
+        insert(root, 5)
+        insert(root, 10)
+        insert(root, 100)
+        insert(root, 200)
+        
+        self.assertEqual(preorder_2(root), [4, 1, 3, 6, 5, 7, 10, 100, 200])
+
 
     def test_preorder_iterative(self):
         root = Node(10)
@@ -133,6 +160,19 @@ class BstTest(unittest.TestCase):
         postorder(root, lista_postorder)
         self.assertEqual(lista_postorder, [3, 1, 5, 200, 100, 10, 7, 6, 4])
     
+    def test_postorder_2(self):
+        root = Node(4)
+        insert(root, 1)
+        insert(root, 3)
+        insert(root, 6)
+        insert(root, 7)
+        insert(root, 5)
+        insert(root, 10)
+        insert(root, 100)
+        insert(root, 200)
+        
+        self.assertEqual(postorder_2, [3, 1, 5, 200, 100, 10, 7, 6, 4])
+
     def test_postorder_iterative(self):
         root = Node(10)
         insert(root, 5)

@@ -67,6 +67,12 @@ def inorder(node, node_list):
     node_list.append(node.value)
     inorder(node.right, node_list)
 
+def inorder_2(node):
+    if node is None:
+        return []
+
+    return inorder_2(node.left) + [node.value] + inorder_2(node.right)
+
 # Iterative function for inorder tree traversal
 def inorder_iterative(node):
     depth_order = []
@@ -94,20 +100,29 @@ def preorder(node, node_list):
     preorder(node.left, node_list)
     preorder(node.right, node_list)
 
+def preorder_2(node):
+    if node is None:
+        return []
+
+    return [node.value] + preorder_2(node.left) + preorder_2(node.right)
+
 # Iterative preorder, left to right traversal using stack data structure
 def dfs(node): 
+    if node is None:
+        return []
+
     depth_order = []
     stack = []
     stack.append(node)
 
     while len(stack) > 0:
         node = stack.pop()
+        depth_order.append(node.value)
         if node.right is not None:
             stack.append(node.right)
         if node.left is not None:
             stack.append(node.left)
-        depth_order.append(node.value)
-
+        
     return depth_order
 
 # Recursive function for postorder tree traversal
@@ -119,8 +134,17 @@ def postorder(node, node_list):
     postorder(node.right, node_list)  
     node_list.append(node.value)
 
+def postorder_2(node):
+    if node is None:
+        return []
+    
+    return postorder_2(node.left) + postorder_2(node.right) + [node.value]
+
 # Iterative postorder traversal using stack data structure
 def postorder_iterative(node):
+    if node is None:
+        return []
+
     depth_order = [] 
     stack = [] 
     stack.append(node)
