@@ -69,18 +69,17 @@ def inorder(node, node_list):
 
 # Iterative function for inorder tree traversal
 def inorder_iterative(node):
-    current = node
     depth_order = []
     stack = []
 
     while True:
-        if current is not None:
-            stack.append(current)
-            current = current.left
+        if node is not None:
+            stack.append(node)
+            node = node.left
         elif len(stack) > 0:
-            current = stack.pop()
-            depth_order.append(current.value)
-            current = current.right
+            node = stack.pop()
+            depth_order.append(node.value)
+            node = node.right
         else:
             break
     
@@ -122,9 +121,6 @@ def postorder(node, node_list):
 
 # Iterative postorder traversal using stack data structure
 def postorder_iterative(node):
-    if node is None:
-        return
-
     depth_order = [] 
     stack = [] 
     stack.append(node)
