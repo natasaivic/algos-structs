@@ -77,15 +77,16 @@ def inorder_2(node):
 def inorder_iterative(node):
     depth_order = []
     stack = []
+    current = node
 
     while True:
-        if node is not None:
-            stack.append(node)
-            node = node.left
+        if current is not None:
+            stack.append(current)
+            current = current.left
         elif len(stack) > 0:
-            node = stack.pop()
-            depth_order.append(node.value)
-            node = node.right
+            current = stack.pop()
+            depth_order.append(current.value)
+            current = current.right
         else:
             break
     
@@ -107,13 +108,13 @@ def preorder_2(node):
     return [node.value] + preorder_2(node.left) + preorder_2(node.right)
 
 # Iterative preorder, left to right traversal using stack data structure
-def dfs(node): 
-    if node is None:
+def dfs(root): 
+    if root is None:
         return []
 
     depth_order = []
     stack = []
-    stack.append(node)
+    stack.append(root)
 
     while len(stack) > 0:
         node = stack.pop()
@@ -141,13 +142,13 @@ def postorder_2(node):
     return postorder_2(node.left) + postorder_2(node.right) + [node.value]
 
 # Iterative postorder traversal using stack data structure
-def postorder_iterative(node):
-    if node is None:
+def postorder_iterative(root):
+    if root is None:
         return []
 
     depth_order = [] 
     stack = [] 
-    stack.append(node)
+    stack.append(root)
   
     while len(stack) > 0: 
         current = stack.pop() 
@@ -294,6 +295,29 @@ def find_tree_height(node):
     left_height = find_tree_height(node.left)
     right_height = find_tree_height(node.right)
     return max(left_height, right_height) + 1
+
+# Iterative method to find height of Binary Tree
+def findTreeHeight(node):
+  if node is None:
+    return 0
+
+  queue = []
+  queue.append(node)
+  height = 0
+
+  while(True):
+    nodeCount = len(queue) # nodeCount(queue size) indicates number of nodes at current level
+    if nodeCount == 0:
+      return height
+
+    height += 1
+    while nodeCount > 0:
+      current = queue.pop(0)
+      if current.left is not None:
+          queue.append(current.left)
+      if current.right is not None:
+          queue.append(current.right)
+      nodeCount -= 1
 
 # Find the node with minimum value in a Binary Search Tree
 def min_value(node):

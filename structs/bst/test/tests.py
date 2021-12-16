@@ -104,6 +104,7 @@ class BstTest(unittest.TestCase):
         insert(root, 16)
 
         self.assertEqual(inorder_iterative(root), [1, 5, 6, 10, 11, 15, 16])
+        self.assertEqual(inorder_iterative(root), [1, 5, 6, 10, 11, 15, 16])
 
     def test_preorder(self):
         root = Node(4)
@@ -171,7 +172,7 @@ class BstTest(unittest.TestCase):
         insert(root, 100)
         insert(root, 200)
         
-        self.assertEqual(postorder_2, [3, 1, 5, 200, 100, 10, 7, 6, 4])
+        self.assertEqual(postorder_2(root), [3, 1, 5, 200, 100, 10, 7, 6, 4])
 
     def test_postorder_iterative(self):
         root = Node(10)
