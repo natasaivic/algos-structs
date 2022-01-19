@@ -28,3 +28,26 @@ k = 2
 for i in range(k):
     count, num = pq.deque()
     print(f"{num}: {count*-1}")
+
+animals = ['cat', 'dog', 'horse', 'cat', 'squirrel', 'dog', 'squirrel', 'deer', 'dog', 'deer', 'cat', 'deer', 'horse', 'cat', 'deer', 'deer', 'pig']
+
+# create counts
+dictionary = {}
+for i in animals:
+  if i not in dictionary:
+    dictionary[i] = 0
+  dictionary[i] += 1
+
+print(dictionary)
+
+# add to heap 
+pq1 = PriorityQueue()
+for key in dictionary:
+  pq1.enque((dictionary[key] * -1, key))
+
+# take from the heap
+k = 5
+for i in range(k):
+  count, animal = pq1.deque()
+  print(f"{animal}: {count * -1}")
+  
