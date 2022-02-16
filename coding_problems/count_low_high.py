@@ -18,9 +18,27 @@ def count_low_high(num_list):
         count_low += 1
     new_list.append(count_low)
     new_list.append(count_high)
-    if new_list == [0, 0]:
-        return None
+    
     return new_list 
+
+
+# Solution 2: Using filter and lambda
+def count_low_high_2(num_list):
+    if len(num_list == 0):
+        return None
+    high_list = list(filter(lambda n: n > 50 or n % 3 == 0, num_list))
+    low_list = list(filter(lambda n: n <= 50 and not n % 3 == 0, num_list))
+    return [len(low_list), len(high_list)]
+
+
+# Solution 3: Using list comprehension
+def count_low_high_3(num_list):
+    if len(num_list == 0):
+        return None
+    high_list = len([n for n in num_list if n > 50 or n % 3 == 0])
+    low_list = len([n for n in num_list if n <= 50 and not n % 3 == 0])
+    return [low_list, high_list]
+
 
 lista = [10,20,30,40,50,60,70,80,90]
 num_list = [-10, 90, 15, 43]
