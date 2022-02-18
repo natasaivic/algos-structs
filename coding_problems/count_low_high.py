@@ -32,6 +32,8 @@ def count_low_high_2(num_list):
 
 
 # Solution 3: Using list comprehension
+# Following the list comprehension syntax, specify the element to be inserted into the new list, 
+# a for loop which iterates the current list, and a condition that needs to be fulfilled.
 def count_low_high_3(num_list):
     if len(num_list == 0):
         return None
