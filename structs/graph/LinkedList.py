@@ -12,6 +12,12 @@ class LinkedList:
             return True
         return False
 
+    def prepend(self, value):
+        temp_node = Node(value)
+        temp_node.next = self.head
+        self.head = temp_node
+        return self.head
+
     def insert_at_head(self, value):
         temp_node = Node(value)
         if self.is_empty():
@@ -22,17 +28,16 @@ class LinkedList:
         self.head = temp_node
         return self.head
 
-    def insert_at_tail(self, value):
+    def append(self, value): # insert at tail
         new_node = Node(value)
         if self.get_head() is None:
             self.head = new_node
             return
         # if list not empty, traverse the list to the last node
-        temp = self.get_head()
-        while temp.next is not None:
-            temp = temp.next
-        # Set the nextElement of the previous node to new node
-        temp.next = new_node
+        current = self.get_head()
+        while current.next is not None:
+            current = current.next
+        current.next = new_node
         return
 
     def length(self):
@@ -48,16 +53,15 @@ class LinkedList:
     def print_list(self):
         if self.is_empty():
             print("List is Empty")
-            return False
-        temp = self.head
-        while temp.next is not None:
-            print(temp.value, end=" -> ")
-            temp = temp.next
-        print(temp.value, "-> None")
-        return True
+            return
+        current = self.head
+        while current.next is not None:
+            print(current.value, end=" -> ")
+            current = current.next
+        print(current.value, "-> None")
+        return
 
     def delete_at_head(self):
-        # Get Head and firstElement of List
         first_element = self.get_head()
         # If List is not empty then link head to the
         # nextElement of firstElement.
@@ -68,41 +72,38 @@ class LinkedList:
 
     def delete(self, value):
         deleted = False
-        if self.is_empty():  # Check if list is empty -> Return False
+        if self.is_empty():  
             print("List is Empty")
             return deleted
-        current_node = self.get_head()  # Get current node
-        previous_node = None  # Get previous node
-        if current_node.value == value:
-            self.delete_at_head()  # Use the previous function
+
+        if self.get_head().value == value:
+            self.head = self.head.next
             deleted = True
             return deleted
 
-        # Traversing/Searching for Node to Delete
-        while current_node is not None:
-            # Node to delete is found
-            if value == current_node.value:
-                # previous node now points to next node
-                previous_node.next = current_node.next
-                current_node.next = None
+        previous = self.get_head()
+        current = self.get_head().next
+        while current is not None:
+            if current.value == value:
+                previous.next = current.next
                 deleted = True
                 break
-            previous_node = current_node
-            current_node = current_node.next
+            previous = current
+            current = current.next
 
         return deleted
 
-    def search(self, value):
+    def search(self, search_value):
         if self.is_empty():
             print("List is Empty")
             return None
-        temp = self.head
-        while temp is not None:
-            if temp.data == value:
-                return temp
-            temp = temp.next
+        current = self.head
+        while current is not None:
+            if current.value == search_value:
+                return current
+            current = current.next
 
-        print(value, " is not in List!")
+        print(search_value, " is not in List!")
         return None
 
     def remove_duplicates(self):
