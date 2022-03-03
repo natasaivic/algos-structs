@@ -28,7 +28,7 @@ class LinkedList:
         self.head = temp_node
         return self.head
 
-    def append(self, value): # insert at tail
+    def insert_at_tail(self, value): # append
         new_node = Node(value)
         if self.get_head() is None:
             self.head = new_node

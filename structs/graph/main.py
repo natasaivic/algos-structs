@@ -8,4 +8,6 @@ g.add_edge(2, 3)
 
 g.print_graph()
 
+print(g.array[0].get_head().value)
 print(g.array[1].get_head().value)
+print(g.array[2].get_head().value)
