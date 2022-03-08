@@ -7,8 +7,6 @@ class Graph:
         for i in range(vertices):
             self.array.append(LinkedList())
 
-    # Function to add an edge from source to destination
-    # Directed graph, (1,0) is not equal to (0,1)
     def add_edge(self, source, destination):
         if (source < self.vertices and destination < self.vertices):
             self.array[source].insert_at_head(destination)    
