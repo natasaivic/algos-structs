@@ -1,7 +1,7 @@
 from Graph import Graph
 from Queue import MyQueue
 
-g = Graph(6)
+g = Graph(4)
 g.add_edge(0, 2)
 g.add_edge(0, 1)
 g.add_edge(1, 3)
@@ -25,12 +25,12 @@ def bfs_traversal_helper(g, source, visited):
         result += str(current_node)
         # Get adjacent vertices to the current_node from the list,
         # and if they are not already visited then enqueue them in the Queue
-        temp = g.array[current_node].head_node
+        temp = g.array[current_node].head
         while temp is not None:
-            if not visited[temp.data]:
-                queue.enqueue(temp.data)
-                visited[temp.data] = True  # Visit the current Node
-            temp = temp.next_element
+            if not visited[temp.value]:
+                queue.enqueue(temp.value)
+                visited[temp.value] = True  # Visit the current Node
+            temp = temp.next
     return result, visited
 
 def bfs_traversal(g, source):
@@ -51,4 +51,17 @@ def bfs_traversal(g, source):
             result_new, visited = bfs_traversal_helper(g, i, visited)
             result += result_new
     return result
-    
+
+if __name__ == "__main__" :
+    g = Graph(4)
+    num_of_vertices = g.vertices
+    if num_of_vertices is 0:
+        print("Graph is empty")
+    elif num_of_vertices < 0:
+        print("Graph cannot have negative vertices")
+    else:
+        g.add_edge(0, 1)
+        g.add_edge(0, 2)
+        g.add_edge(1, 3)
+        g.add_edge(2, 3)
+        print(bfs_traversal(g, 0))
