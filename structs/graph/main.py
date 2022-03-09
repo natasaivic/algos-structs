@@ -84,6 +84,29 @@ def dfs_traversal(g, source):
             result += result_new
     return result
 
+def find_shortest_path(g, a, b):
+    num_of_vertices = g.vertices
+    visited = []
+    distance = []
+    for i in range(num_of_vertices):
+        visited.append(False)
+        distance.append(0)
+    
+    queue = MyQueue()
+    queue.enqueue(a)
+    visited[a] = True
+    while queue.is_empty() is not True:
+        current_node = queue.dequeue()
+        temp = g.array[current_node].head
+        while temp is not None:
+            if visited[temp.value] is False or temp.value is b:
+                queue.enqueue(temp.value)
+                visited[temp.value] = True
+                distance[temp.value] = distance[current_node] + 1
+                if temp.value is b:
+                    return distance[b]
+            temp = temp.next
+
 
 if __name__ == "__main__" :
     g = Graph(4)
@@ -112,3 +135,14 @@ if __name__ == "__main__" :
         g2.add_edge(2, 5)
         g2.add_edge(3, 6)
         print(dfs_traversal(g2, 1))
+
+    g3 = Graph(7)
+    g3.add_edge(1, 2)
+    g3.add_edge(1, 3)
+    g3.add_edge(2, 4)
+    g3.add_edge(4, 5)
+    g3.add_edge(2, 5)
+    g3.add_edge(5, 6)
+    g3.add_edge(3, 6)
+
+    print(find_shortest_path(g3, 4, 6))
