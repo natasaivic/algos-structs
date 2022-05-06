@@ -578,3 +578,21 @@ def rightSideView(root):
 
     return right_side
 
+
+# the sum of values of all nodes with a value in the inclusive range [low, high]
+def rangeSumBST(root, low, high):
+    result = 0
+    stack = []
+    stack.append(root)
+
+    while len(stack) > 0:
+        node = stack.pop()
+        if node is not None:
+            if low <= node.value <= high:
+                result += node.value
+            if low < node.value:
+                stack.append(node.left)
+            if node.value < high:
+                stack.append(node.right)
+
+    return result

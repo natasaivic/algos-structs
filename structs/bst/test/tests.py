@@ -9,7 +9,7 @@ from bst import (
     size_2, size_3, size_4, find_tree_height, min_value, 
     max_value, find_max_path, find_min_path, root_to_leaf_path, 
     root_to_leaf_path_sum, hasPathSum, sumOfLeftLeaves, insert_duplicate_node, 
-    getLevel, nodes_by_level, isSymmetric, invertTree, is_same_tree, isSubtree, rightSideView
+    getLevel, nodes_by_level, isSymmetric, invertTree, is_same_tree, isSubtree, rightSideView, rangeSumBST
 )
 
 
@@ -555,6 +555,18 @@ class BstTest(unittest.TestCase):
         self.assertEqual(result, expected)
         self.assertEqual(result_2, expected_2)
 
+
+    def test_rangeSumBST(self):
+        root = Node(10)
+        insert(root, 5)
+        insert(root, 15)
+        insert(root, 3)
+        insert(root, 7)
+        insert(root, 18)
+        
+        result = rangeSumBST(root, 6, 17)
+        expected = 32
+        self.assertEqual(result, expected)
 
 if __name__ == '__main__':
     unittest.main()
