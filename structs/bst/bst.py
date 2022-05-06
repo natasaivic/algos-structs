@@ -551,3 +551,30 @@ def isSubtree(root, subRoot):
         if is_same_tree(root.left, subRoot.left) and is_same_tree(root.right, subRoot.right):
             return True
     return isSubtree(root.left, subRoot) or isSubtree(root.right, subRoot)
+
+
+# Given the root of a binary tree, imagine yourself standing on the right side of it, 
+# return the values of the nodes you can see ordered from top to bottom.
+# Meaning, return all the rightmost nodes at each level.
+def rightSideView(root):
+    if root is None:
+        return []
+
+    queue = []
+    queue.append(root)
+    right_side = []
+
+    while len(queue) > 0:
+        level_length = len(queue)
+        for i in range(level_length):
+            node = queue.pop(0)
+            if i == level_length - 1:
+                right_side.append(node.value)
+
+            if node.left is not None:
+                queue.append(node.left)
+            if node.right is not None:
+                queue.append(node.right)
+
+    return right_side
+

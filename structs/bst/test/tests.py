@@ -9,7 +9,7 @@ from bst import (
     size_2, size_3, size_4, find_tree_height, min_value, 
     max_value, find_max_path, find_min_path, root_to_leaf_path, 
     root_to_leaf_path_sum, hasPathSum, sumOfLeftLeaves, insert_duplicate_node, 
-    getLevel, nodes_by_level, isSymmetric, invertTree, is_same_tree, isSubtree
+    getLevel, nodes_by_level, isSymmetric, invertTree, is_same_tree, isSubtree, rightSideView
 )
 
 
@@ -537,6 +537,24 @@ class BstTest(unittest.TestCase):
 
         expected2 = isSubtree(root, subRoot2) 
         self.assertFalse(expected2)
+
+    def test_rightSideView(self):
+        root = Node(5)
+        insert(root, 1)
+        insert(root, 3)
+        insert(root, 7)
+        insert(root, 6)
+        result = rightSideView(root)
+        expected = [5, 7, 6]
+
+        root_2 = Node(2)
+        insert(root_2, 1)
+        result_2 = rightSideView(root_2)
+        expected_2 = [2, 1]
+
+        self.assertEqual(result, expected)
+        self.assertEqual(result_2, expected_2)
+
 
 if __name__ == '__main__':
     unittest.main()
