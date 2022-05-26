@@ -109,6 +109,24 @@ class List:
             current = current.next
         return False
     
+    def delete_duplicate_nodes(self, value):
+        if self.head is None:
+            return None
+
+        while self.head.value == value:
+            self.head = self.head.next
+            if self.head is None:
+                return None
+        
+        current = self.head
+        while current.next is not None:
+            if current.next.value == value:
+                current.next = current.next.next
+                continue
+            current = current.next
+        
+        return self.head
+
     def is_empty(self):
         return self.head is None
     
