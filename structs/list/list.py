@@ -142,6 +142,17 @@ class List:
             current = current.next
         return False
 
+    def replace_all_duplicates(self, n, m):
+        if self.head is None:
+            return None
+        
+        current = self.head
+        while current is not None:
+            if current.value == n:
+                current.value = m
+            current = current.next
+        return self.head
+
     def suma(self):
         suma = 0
         current = self.head
