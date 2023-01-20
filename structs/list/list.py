@@ -63,6 +63,17 @@ class List:
             current = current.next
         return current.value
 
+    def count(self):
+        if self.head is None:
+            return 0
+        
+        length = 0
+        current = self.head
+        while current is not None:
+            length += 1
+            current = current.next
+        return length
+
     def removeNthFromEnd(self, n):
         slow = self.head
         fast = self.head
@@ -127,6 +138,27 @@ class List:
         
         return self.head
     
+    def remove_all_duplicates_and_its_orginals(self):
+        if self.head is None:
+            return None
+
+        dummy_node = List()
+        dummy_node.next = self.head
+        previous = dummy_node
+        current = self.head
+
+        while current and current.next:
+            if current.value == current.next.value:
+                node = current
+                while node and node.value == current.value:
+                    node = node.next
+                current = node
+                previous.next = node
+            else:
+                previous = current
+                current = current.next
+        return dummy_node.next
+
     def remove_duplicates_from_sorted_list(self): # 1 -> 1 -> 2 -> 2 -> 3 -> 4 -> 4 -> None
         if self.head is None:
             return None
