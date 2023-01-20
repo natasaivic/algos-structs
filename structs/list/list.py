@@ -109,7 +109,7 @@ class List:
             current = current.next
         return False
     
-    def delete_duplicate_nodes(self, value):
+    def delete_duplicate_nodes(self, value): # 1 -> 1 -> 1 -> 2 -> 3 -> 1 -> 4 -> None
         if self.head is None:
             return None
 
@@ -125,6 +125,18 @@ class List:
                 continue
             current = current.next
         
+        return self.head
+    
+    def remove_duplicates_from_sorted_list(self): # 1 -> 1 -> 2 -> 2 -> 3 -> 4 -> 4 -> None
+        if self.head is None:
+            return None
+        
+        current = self.head
+        while current.next is not None:
+            if current.value == current.next.value:
+                current = current.next.next
+            else:
+                current = current.next
         return self.head
 
     def is_empty(self):
