@@ -102,6 +102,8 @@ class List:
             fast = fast.next.next
         return slow.value
 
+    # Linked list elements are unique
+    # unsorted list
     def delete(self, value):
         if self.head is None:
             return False
@@ -120,7 +122,12 @@ class List:
             current = current.next
         return False
     
-    def delete_duplicate_nodes(self, value): # 1 -> 1 -> 1 -> 2 -> 3 -> 1 -> 4 -> None
+    # Given an integer value, remove all the nodes of the linked list that has Node.value == n, and return the new head.
+    # unsorted list
+    # 1 -> 1 -> 1 -> 2 -> 3 -> 1 -> 4 -> None  
+    # remove_elements(1)
+    # 2 -> 3 -> 4 -> None
+    def remove_elements(self, value): 
         if self.head is None:
             return None
 
@@ -138,6 +145,8 @@ class List:
         
         return self.head
     
+    # Sorted linked list
+    # Remove all nodes that have duplicate numbers, leaving only distinct numbers from the original list. Return the linked list sorted as well.
     def remove_all_duplicates_and_its_orginals(self):
         if self.head is None:
             return None
@@ -159,6 +168,7 @@ class List:
                 current = current.next
         return dummy_node.next
 
+    # Remove all duplicates such that each element appears only once. Return the linked list sorted as well.
     def remove_duplicates_from_sorted_list(self): # 1 -> 1 -> 2 -> 2 -> 3 -> 4 -> 4 -> None
         if self.head is None:
             return None
