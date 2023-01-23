@@ -227,6 +227,47 @@ class List:
                 return True
         return False
 
+    def reverse(self):
+        if self.head is None:
+            return None
+
+        previous = None
+        while self.head is not None:
+            temp = self.head.next
+            self.head.next = previous
+            previous = self.head
+            self.head = temp
+        return previous
+
+    def reverse_between(self, left, right):
+        if self.head is None:
+            return None
+        
+        previous = None
+        current = self.head
+        while left > 1:
+            previous = current
+            current = current.next
+            left -= 1
+            right -= 1
+
+        connection = previous
+        tail = current
+        while right > 0:
+            temp = current.next
+            current.next = previous
+            previous = current
+            current = temp
+            right -= 1
+
+        if connection is not None:
+            connection.next = previous
+        else:
+            self.head = previous
+        
+        tail.next = current
+        return self.head
+
     def __repr__(self):
         return f"{self.head}"
         
