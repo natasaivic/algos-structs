@@ -268,6 +268,22 @@ class List:
         tail.next = current
         return self.head
 
+    def odd_even(self):
+        if self.head is None:
+            return None
+        
+        odd = self.head
+        even = self.head.next
+        evenHead = even
+        while even is not None and even.next is not None:
+            odd.next = even.next
+            odd = odd.next
+            even.next = odd.next
+            even = even.next
+        
+        odd.next = evenHead
+        return self.head
+
     def __repr__(self):
         return f"{self.head}"
         
