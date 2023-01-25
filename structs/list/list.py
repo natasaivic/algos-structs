@@ -284,6 +284,38 @@ class List:
         odd.next = evenHead
         return self.head
 
+    def is_palindrome(self):
+        if self.head is None:
+            return
+
+        # 1st step: Locate the mid point of linked list
+        # [1 2 3]
+        slow = self.head
+        fast = self.head
+        while fast is not None and fast.next is not None:
+            fast = fast.next.next  
+            if fast is not None:
+                slow = slow.next
+        mid = slow #head of the second half
+    
+        # 2nd step: Reverse second half of linked list
+        prev = None
+        current = mid 
+        while current is not None:
+            temp = current.next
+            current.next = prev
+            prev = current
+            current = temp
+        head_2 = prev
+
+        current = self.head
+        while current is not None and head_2 is not None:
+            if current.value != head_2.value:
+                return False
+            current = current.next
+            head_2 = head_2.next
+        return True
+
     def __repr__(self):
         return f"{self.head}"
         
