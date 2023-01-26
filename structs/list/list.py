@@ -316,6 +316,20 @@ class List:
             head_2 = head_2.next
         return True
 
+    def swap_nodes_in_pairs(self):
+        temp = Node(0)
+        temp.next = self.head
+        current = temp
+
+        while current.next is not None and current.next.next is not None:
+            first_node = current.next
+            second_node = current.next.next
+            first_node.next = second_node.next
+            current.next = second_node
+            current.next.next = first_node
+            current = current.next.next
+        return temp.next
+        
     def __repr__(self):
         return f"{self.head}"
         
