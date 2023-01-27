@@ -26,6 +26,51 @@ class List:
         node.next = self.head
         self.head = node
 
+    # insert node in sorted list
+    def insert(self, node):
+        if self.head is None:
+            return None
+
+        prev = None
+        current = self.head
+        while current is not None:
+            if current.value > node.value:
+                if prev is not None:
+                    prev.next = node
+                    node.next = current
+                    return self.head
+                else:
+                    node.next = self.head
+                    self.head = node
+                    return self.head
+            prev = current
+            current = current.next
+        prev.next = node
+        return self.head
+
+    # insert value on k-th place of an unsorted list if k <= n, else append
+    def insert_node_on_kth(self, k, node):
+        if self.head is None:
+            return None
+
+        if k == 0 or k == 1:
+            node.next = self.head
+            self.head = node
+            return self.head
+
+        prev = None
+        current = self.head
+        for i in range(1, k):
+            if current is None:
+                prev.next = node
+                return self.head
+            prev = current
+            current = current.next
+        prev.next = node
+        node.next = current
+
+        return self.head
+
     def find(self, search_value):
         if self.head is None:
             return False
@@ -58,6 +103,9 @@ class List:
             length += 1
             current = current.next
         
+        if length < n:
+            return None
+
         current = self.head
         for i in range(0, length - n):
             current = current.next
@@ -102,8 +150,8 @@ class List:
             fast = fast.next.next
         return slow.value
 
-    # Linked list elements are unique
     # unsorted list
+    # unique elements
     def delete(self, value):
         if self.head is None:
             return False
@@ -122,11 +170,32 @@ class List:
             current = current.next
         return False
     
-    # Given an integer value, remove all the nodes of the linked list that has Node.value == n, and return the new head.
     # unsorted list
+    # unique elements
+    def delete2(self, value):
+        if self.head is None:
+            return None
+        
+        if self.head.value == value:
+            self.head = self.head.next
+            return self.head
+
+        previous = self.head
+        current = self.head.next
+        while current is not None:
+            if current.value == value:
+                previous.next = current.next
+                return self.head
+            previous = current
+            current = current.next
+        return f"Non existing number."
+
+    # unsorted list
+    # with duplicates 
+    # Given an integer value, remove all the nodes of the linked list that has Node.value == n, and return the new head.
     # 1 -> 1 -> 1 -> 2 -> 3 -> 1 -> 4 -> None  
     # remove_elements(1)
-    # 2 -> 3 -> 4 -> None
+    # output: 2 -> 3 -> 4 -> None
     def remove_elements(self, value): 
         if self.head is None:
             return None
@@ -145,7 +214,32 @@ class List:
         
         return self.head
     
-    # Sorted linked list
+    # sorted list
+    # with duplicates
+    def remove_duplicates_2(self, value):
+        if self.head is None:
+            return None
+    
+        while self.head.value == value:
+            self.head = self.head.next
+            if self.head is None:
+                return None
+
+        done = False
+        current = self.head
+        while current.next is not None:
+            if current.next.value == value:
+                current.next = current.next.next
+                done = True
+                continue
+            else:
+                if done is False:
+                    current = current.next
+                else:
+                    break
+        return self.head
+
+    # sorted
     # Remove all nodes that have duplicate numbers, leaving only distinct numbers from the original list. Return the linked list sorted as well.
     def remove_all_duplicates_and_its_orginals(self):
         if self.head is None:
@@ -329,7 +423,7 @@ class List:
             current.next.next = first_node
             current = current.next.next
         return temp.next
-        
+
     def __repr__(self):
         return f"{self.head}"
         
