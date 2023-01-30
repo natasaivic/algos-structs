@@ -150,6 +150,22 @@ class List:
             fast = fast.next.next
         return slow.value
 
+    def delete_middle(self):
+        if self.head is None:
+            return
+        if self.head.next is None:
+            return None
+        
+        temp = self.head
+        slow, fast = self.head, self.head
+        while fast and fast.next:
+            temp = slow
+            slow = slow.next
+            fast = fast.next.next
+        
+        temp.next = slow.next
+        return self.head
+
     # unsorted list
     # unique elements
     def delete(self, value):
@@ -423,6 +439,26 @@ class List:
             current.next.next = first_node
             current = current.next.next
         return temp.next
+
+    def rotate_right_by_k_places(self, k):
+        right = self.head
+        left = self.head
+        for i in range(1, k):
+            left = left.next
+
+        # Find kth node from right
+        # by finding tail node
+        tail = left
+        while tail.next.next is not None:
+            right = right.next 
+            tail = tail.next
+        tail = tail.next
+
+        new_head = right.next
+        right.next = None
+        tail.next = self.head
+
+        return new_head
 
     def __repr__(self):
         return f"{self.head}"
